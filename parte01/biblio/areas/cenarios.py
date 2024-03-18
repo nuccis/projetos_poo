@@ -1,13 +1,10 @@
 class Cenario:
-    def __init__(self, name:str, inimigos:list, description:dict) -> None:
+    def __init__(self, name:str, inimigo:object, description:tuple) -> None:
         self.name = name
-        self.inimigos = inimigos
+        self.inimigo = inimigo
         self.description = description
         self.descoberto = False
     
-    def menu(self):
-        pass
-
     def descrever(self):
         pass
 
