@@ -14,4 +14,4 @@ class Cenario:
                 f'(nome = {self.nome}, '
                 f'inimigo = {self.inimigo}, '
                 f'description = {self.description}, '
-                f'descoberto = {self.descoberto})')
+                f'descoberto = {self.descoberto.capitalize()})')

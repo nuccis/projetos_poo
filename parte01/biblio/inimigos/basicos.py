@@ -20,16 +20,16 @@ class InimigoBasico:
             jogador.vida -= self.ataque
 
 class Lobo(InimigoBasico):
-    def __init__(self) -> None:
-        super().__init__(nome='Lobo', vida=10, ataque=2)
+    def __init__(self, nome) -> None:
+        super().__init__(nome, vida=10, ataque=2)
     
     def atacar(self, jogador) -> None:
         print('O lobo rosna e ataca')
         super().atacar(jogador)
 
 class Urso(InimigoBasico):
-    def __init__(self) -> None:
-        super().__init__(nome='Urso', vida=14, ataque=3)
+    def __init__(self, nome) -> None:
+        super().__init__(nome, vida=14, ataque=3)
     
     def atacar(self, jogador) -> None:
         print('O urso ruge e ataca')

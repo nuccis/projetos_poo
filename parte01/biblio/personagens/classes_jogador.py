@@ -12,7 +12,7 @@ class Personagem:
         return(f'Nome: {self.nome}\n'
               f'Vida: {self.vida}/{self.vidamax}\n'
               f'Ataque: {self.ataque}\n'
-              f'Localização: {self.localizacao}'
+              f'Localização: {self.localizacao.nome}'
               )
     
     def atacar(self, inimigo) -> None:

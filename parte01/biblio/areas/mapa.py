@@ -1,5 +1,6 @@
-import cenarios as ce
-import cidades as ci
+from . import cenarios as ce
+from . import cidades as ci
+
 
 #Locais
 cidade = ci.Cidade('cidade', 'nenhum', ('novo', 'antigo'))
@@ -11,9 +12,9 @@ campo = ce.Cenario('campo', 'nenhum', ('novo', 'antigo'))
 
 #Mapa
 mapa = {
-    'floresta':(cidade),
+    'floresta':(cidade,),
     'cidade':(floresta, estrada_escura, estrada_pedra, estrada_terra),
-    'estrada escura':(cidade),
+    'estrada escura':(cidade,),
     'estrada de pedra':(cidade, campo),
     'estrada de terra':(cidade, campo),
     'campo':(estrada_terra, estrada_pedra)
