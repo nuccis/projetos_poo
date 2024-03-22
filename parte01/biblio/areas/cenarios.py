@@ -5,6 +5,7 @@ class Cenario:
         self.inimigo = inimigo
         self.description = description
         self.descoberto = False
+        self.tipo = 'cenario'
     
     def descrever(self):
         pass

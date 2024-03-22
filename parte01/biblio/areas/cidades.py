@@ -4,6 +4,7 @@ class Cidade:
         self.nome = nome
         self.description = description
         self.descoberto = False
+        self.tipo = 'cidade'
     
     def descrever(self):
         pass
