@@ -1,8 +1,7 @@
 #Definição de classe
 class Cidade:
-    def __init__(self, nome:str, inimigo:object, description:tuple) -> None:
+    def __init__(self, nome:str, description:tuple) -> None:
         self.nome = nome
-        self.inimigo = inimigo
         self.description = description
         self.descoberto = False
     
@@ -12,6 +11,5 @@ class Cidade:
     def __repr__(self) -> str:
         return(f'{type(self).__name__}, '
                 f'(nome = {self.nome}, '
-                f'inimigo = {self.inimigo}, '
                 f'description = {self.description}, '
                 f'descoberto = {self.descoberto})')

@@ -28,6 +28,16 @@ class Personagem:
             print(f'[{i+1}] {e.nome.capitalize()}')
         resp = int(input('Digite a sua escolha: '))
         self.localizacao = mapa[self.localizacao.nome][resp - 1]
+    
+    def procurar_monstros(self):
+        #Aqui eu vou definir uma função que vai procurar inimigos e vai ter as seguintes condições:
+        #checar se self.localização é uma cidade
+        #Checar se self.localização.inimigo é uma instância
+        #checar se o inimigo está vivo ou morto
+        #caso vivo checar se o mesmo está ferido
+        #Se encontrar um monstro retorna True, caso contrário retorna False 
+        #Se o monstro estiver ferido retorna True, caso contrário retorna False
+        pass
 
 
 class Arqueiro(Personagem):

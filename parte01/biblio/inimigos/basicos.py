@@ -7,8 +7,8 @@ class InimigoBasico:
         self.ataque = ataque
         self.vivo = True
     
-    def check_status(self) -> None:
-        print(f'Nome: {self.nome}\n'
+    def __str__(self) -> str:
+        return(f'Nome: {self.nome}\n'
               f'Vida: {self.vida}/{self.vidamax}\n'
               f'Ataque: {self.ataque}')
     
@@ -18,18 +18,22 @@ class InimigoBasico:
             jogador.vida = 0
         else:
             jogador.vida -= self.ataque
+    
+    def status(self):
+        #aqui irá retornar textos para diferentes status do lobo: vivo, ferido e morto
+        pass
 
 class Lobo(InimigoBasico):
-    def __init__(self, nome) -> None:
-        super().__init__(nome, vida=10, ataque=2)
+    def __init__(self, nome, vida, ataque) -> None:
+        super().__init__(nome, vida, ataque)
     
     def atacar(self, jogador) -> None:
         print('O lobo rosna e ataca')
         super().atacar(jogador)
 
 class Urso(InimigoBasico):
-    def __init__(self, nome) -> None:
-        super().__init__(nome, vida=14, ataque=3)
+    def __init__(self, nome, vida, ataque) -> None:
+        super().__init__(nome, vida, ataque)
     
     def atacar(self, jogador) -> None:
         print('O urso ruge e ataca')

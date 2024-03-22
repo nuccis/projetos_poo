@@ -1,13 +1,14 @@
 from . import cenarios as ce
 from . import cidades as ci
+from .. import inimigos as ig
 
 
 #Locais
-cidade = ci.Cidade('cidade', 'nenhum', ('novo', 'antigo'))
+cidade = ci.Cidade('cidade',('novo', 'antigo'))
 floresta = ce.Cenario('floresta', 'nenhum', ('novo', 'antigo'))
 estrada_escura = ce.Cenario('estrada escura', 'nenhum', ('novo', 'antigo'))
-estrada_pedra = ce.Cenario('estrada de pedra', 'nenhum', ('novo', 'antigo'))
-estrada_terra = ce.Cenario('estrada de terra', 'nenhum', ('novo', 'antigo'))
+estrada_pedra = ce.Cenario('estrada de pedra', ig.bestiario.lobo_sanguinario, ('novo', 'antigo'))
+estrada_terra = ce.Cenario('estrada de terra', ig.bestiario.urso_raivoso, ('novo', 'antigo'))
 campo = ce.Cenario('campo', 'nenhum', ('novo', 'antigo'))
 
 #Mapa
