@@ -21,7 +21,17 @@ class InimigoBasico:
     
     def status(self):
         #aqui irá retornar textos para diferentes status do lobo: vivo, ferido e morto
-        pass
+        if self.vida == self.vidamax:
+            print(f'O {self.nome} te encara friamente')
+            inimigo_vivo = True
+        elif self.vida > 0 and self.vida < self.vidamax:
+            print(f'O {self.nome} está com marcas de sangue pelo corpo')
+            inimigo_vivo = True
+        else:
+            print(f'O {self.nome} jaz imóvel sem vida no chão')
+            inimigo_vivo = False
+        return inimigo_vivo
+        
 
 class Lobo(InimigoBasico):
     def __init__(self, nome, vida, ataque) -> None:
