@@ -5,6 +5,6 @@ from biblio.personagens import classes_jogador as jdr
 
 let = jdr.Arqueiro('Nucis', mp.estrada_pedra)
 print(let)
-let.procurar_monstros()
+let.procurar_inimigos()
 
 #Criar um menuzinho para andar pelos mapas e interagir com eles.

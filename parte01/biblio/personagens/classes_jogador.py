@@ -29,7 +29,7 @@ class Personagem:
         resp = int(input('Digite a sua escolha: '))
         self.localizacao = mapa[self.localizacao.nome][resp - 1]
     
-    def procurar_monstros(self):
+    def procurar_inimigos(self):
         #Aqui eu vou definir uma função que vai procurar inimigos e vai ter as seguintes condições:
         inimigo_existe = False
         inimigo_vivo = False
