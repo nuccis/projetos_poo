@@ -27,7 +27,9 @@ class Personagem:
         for i, e in enumerate(mapa[self.localizacao.nome]):
             print(f'[{i+1}] {e.nome.capitalize()}')
         resp = int(input('Digite a sua escolha: '))
+        self.localizacao.descoberto = True
         self.localizacao = mapa[self.localizacao.nome][resp - 1]
+
     
     def procurar_inimigos(self):
         #Aqui eu vou definir uma função que vai procurar inimigos e vai ter as seguintes condições:
@@ -39,7 +41,7 @@ class Personagem:
         #Checar se self.localização.inimigo é uma instância
         elif type(self.localizacao.inimigo) is str:
             print('Não há inimigos por perto.')
-        elif isinstance(self.localizacao.inimigo, object):
+        else:
             inimigo_vivo = self.localizacao.inimigo.status()
             inimigo = self.localizacao.inimigo
         return inimigo_vivo, inimigo

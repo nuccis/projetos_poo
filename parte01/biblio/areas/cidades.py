@@ -7,7 +7,10 @@ class Cidade:
         self.tipo = 'cidade'
     
     def descrever(self):
-        pass
+        if not self.descoberto:
+            print(self.description[0])
+        else:
+            print(self.description[1])
 
     def __repr__(self) -> str:
         return(f'{type(self).__name__}, '

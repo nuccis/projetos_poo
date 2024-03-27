@@ -3,7 +3,8 @@ from biblio.inimigos import basicos as inb
 from biblio.personagens import classes_jogador as jdr
 
 
-let = jdr.Arqueiro('Nucis', mp.estrada_pedra)
+let = jdr.Arqueiro('Nucis', mp.floresta)
+
 print(let)
 
 #Criar um menuzinho para andar pelos mapas e interagir com eles.
@@ -16,7 +17,7 @@ while True:
           '[4] Sair do jogo\n')
     opc = int(input('Opção desejada: '))
     if opc == 1:
-        print(let)
+        let.localizacao.descrever()
     elif opc == 2:
         inimigo_vivo, inimigo = let.procurar_inimigos()
         if inimigo_vivo:
@@ -38,7 +39,10 @@ while True:
                 
     elif opc == 3:
         let.movimentar(mp.mapa)
+        let.localizacao.descrever()
     elif opc == 4:
         break
 
 print('Até logo!')
+
+
