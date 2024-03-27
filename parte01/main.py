@@ -2,13 +2,18 @@ from biblio.areas import mapa as mp
 from biblio.inimigos import basicos as inb
 from biblio.personagens import classes_jogador as jdr
 
+#função
+
 
 let = jdr.Arqueiro('Nucis', mp.floresta)
 
 print(let)
 
-#Criar um menuzinho para andar pelos mapas e interagir com eles.
-#Implementar a função descrever dos cenários
+#Criar a interação de combate entre o inimigo e o player
+#Criar opções de saída do jogo: quando o jogador escolhe sair ou quando o jogador morre
+#Configurar o cenário campo como o cenário final
+#Criar um inventário para o player
+#Configurar o cenário estrada escura com um loot para o player
 while True:
     print('Escolha uma opção: ')
     print('[1] Olhar ao redor\n'
@@ -24,6 +29,7 @@ while True:
             while True:
                 print('O que gostaria de fazer?\n'
                     '[1] Atacar\n'
+                    '[2] Avaliar ameaça\n'
                     '[2] Ignorar\n')
                 esc = int(input('Opção desejada: '))
                 if esc == 2:
