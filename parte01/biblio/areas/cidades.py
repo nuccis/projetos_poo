@@ -8,9 +8,13 @@ class Cidade:
     
     def descrever(self):
         if not self.descoberto:
-            print(self.description[0])
+            linhas = self.description[0].split('\n')
+            for linha in linhas:
+                print(f'\033[0;34m{linha.center(100)}\033[m')
         else:
-            print(self.description[1])
+            linhas = self.description[1].split('\n')
+            for linha in linhas:
+                print(f'\033[0;34m{linha.center(100)}\033[m')
 
     def __repr__(self) -> str:
         return(f'{type(self).__name__}, '

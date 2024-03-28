@@ -18,7 +18,7 @@ cidade_desc_segunda_visita = ('Você retorna ao vilarejo medieval conhecido,\n'
                               'enquanto os habitantes vão e vêm, cumprimentando-se com sorrisos familiares.'
                               )
 
-floresta_desc_primeira_visita = (f'{'Você acorda desnorteado em uma densa floresta,\n':^80}'
+floresta_desc_primeira_visita = ('Você acorda desnorteado em uma densa floresta,\n'
                                  'envolto pela penumbra das árvores altas e antigas.\n'
                                  'A memória da estrada e da carroça passando rapidamente por você,\n'
                                  'fazendo-o cair e bater a cabeça, retorna vagamente à sua mente.\n'
