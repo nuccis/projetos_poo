@@ -10,7 +10,7 @@ class InimigoBasico:
     def __str__(self) -> str:
         return(f'Nome: {self.nome}\n'
               f'Vida: {self.vida}/{self.vidamax}\n'
-              f'Ataque: {self.ataque}')
+              f'Ataque: {self.ataque}\n')
     
     def atacar(self, jogador) -> None:
         if jogador.vida - self.ataque <= 0:
@@ -20,25 +20,25 @@ class InimigoBasico:
             jogador.vida -= self.ataque
     
     def status(self):
-        #aqui irá retornar textos para diferentes status do lobo: vivo, ferido e morto
+        #aqui irá retornar textos para diferentes status do inimigo: vivo, ferido e morto
         if self.vida == self.vidamax:
             print(f'O {self.nome} te encara friamente')
-            inimigo_vivo = True
         elif self.vida > 0 and self.vida < self.vidamax:
             print(f'O {self.nome} está com marcas de sangue pelo corpo')
-            inimigo_vivo = True
+            print(f'Vida do {self.nome}: {self.vida}/{self.vidamax}')
         else:
             print(f'O {self.nome} jaz imóvel sem vida no chão')
-            inimigo_vivo = False
-        return inimigo_vivo
-        
+            print(f'Vida do {self.nome}: {self.vida}/{self.vidamax}')
 
+
+        
 class Lobo(InimigoBasico):
     def __init__(self, nome, vida, ataque) -> None:
         super().__init__(nome, vida, ataque)
     
     def atacar(self, jogador) -> None:
         print('O lobo rosna e ataca')
+        print(f'Infligindo {self.ataque} de dano à você')        
         super().atacar(jogador)
 
 class Urso(InimigoBasico):
@@ -47,4 +47,5 @@ class Urso(InimigoBasico):
     
     def atacar(self, jogador) -> None:
         print('O urso ruge e ataca')
+        print(f'Infligindo {self.ataque} de dano à você')
         super().atacar(jogador)

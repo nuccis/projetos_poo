@@ -33,7 +33,6 @@ class Personagem:
     
     def procurar_inimigos(self):
         #Aqui eu vou definir uma função que vai procurar inimigos e vai ter as seguintes condições:
-        inimigo_vivo = False
         inimigo = ''
         #checar se self.localização é uma cidade
         if self.localizacao.tipo == 'cidade':
@@ -42,10 +41,17 @@ class Personagem:
         elif type(self.localizacao.inimigo) is str:
             print('Não há inimigos por perto.')
         else:
-            inimigo_vivo = self.localizacao.inimigo.status()
             inimigo = self.localizacao.inimigo
-        return inimigo_vivo, inimigo
-   
+        return inimigo
+    
+    def status(self):
+        #aqui irá retornar textos para diferentes status do inimigo: vivo, ferido e morto
+        if self.vida > 0 and self.vida < self.vidamax:
+            print('Você possui alguns ferimentos pelo corpo')
+        else:
+            print('Você está caído sem vida no chão')
+        print(f'A sua vida: {self.vida}/{self.vidamax}')
+    
 
 class Arqueiro(Personagem):
     def __init__(self, nome: str, localizacao: object) -> None:
@@ -53,4 +59,5 @@ class Arqueiro(Personagem):
     
     def atacar(self, inimigo: object) -> None:
         print('Você aponta o seu arco e atira')
+        print(f'Infligindo {self.ataque} de dano ao {inimigo.nome}')
         return super().atacar(inimigo)
