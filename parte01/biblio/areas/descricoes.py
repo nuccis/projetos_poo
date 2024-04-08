@@ -54,3 +54,16 @@ estrada_de_terra_desc_primeira_visita = ('Você está em uma estrada de terra la
 estrada_de_terra_desc_segunda_visita = ('Você volta à estrada de terra lamacenta,\n'
                                         'cortando através da paisagem rural familiar.\n'
                                         )
+
+estrada_escura_desc_primeira_visita = ('Você está em uma estrada estreita e escura,\n'
+                       'cercada por altas árvores que bloqueiam a maior parte da luz do sol.\n'
+                       'O ar está impregnado com um silêncio pesado e um leve cheiro de musgo e decomposição.\n'
+                       'Cada passo que você dá ecoa sinistramente pela estrada vazia.\n'
+                       'À medida que avança, percebe um monte de terra no final da estrada,\n'
+                       'parecendo esconder algo misterioso sob sua superfície.'
+                       )
+
+estrada_escura_desc_segunda_visita = ('Você retorna à estrada estreita e escura,\n'
+                                      'onde as sombras das árvores parecem se mover em torno de você.\n'
+                                      'O silêncio pesado ainda permeia o ar'
+                                      )

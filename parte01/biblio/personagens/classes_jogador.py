@@ -7,7 +7,9 @@ class Personagem:
         self.ataque = ataque
         self.vivo = True
         self.localizacao = localizacao
+        self._inventario = []
     
+    #Funcionalidade da classe
     def __str__(self) -> str:
         return(f'Nome: {self.nome}\n'
               f'Vida: {self.vida}/{self.vidamax}\n'
@@ -29,7 +31,6 @@ class Personagem:
         resp = int(input('Digite a sua escolha: '))
         self.localizacao.descoberto = True
         self.localizacao = mapa[self.localizacao.nome][resp - 1]
-
     
     def procurar_inimigos(self):
         #Aqui eu vou definir uma função que vai procurar inimigos e vai ter as seguintes condições:
@@ -51,6 +52,41 @@ class Personagem:
         else:
             print('Você está caído sem vida no chão')
         print(f'A sua vida: {self.vida}/{self.vidamax}')
+
+    def mostar_inventario(self):
+        if len(self.inventario) == 0:
+            print('Seu inventário está vázio')
+        else:
+            print(f'{'\033[32m===INVENTARIO===\033[m':^30}')
+            for i, item in enumerate(self.inventario):
+                print(f'[{i+1}] {item.nome}')        
+
+    def vasculhar_objetos(self):
+        if self.localizacao.tipo == 'cidade' or type(self.localizacao.item) is str:
+            print('Não há nenhum objeto por perto')
+        else:
+            print(f'Você encontra um objeto do tipo: {self.localizacao.item.nome}')
+            print(f'E o objeto se encontrava: {self.localizacao.item.descricao}')
+            print('O que gostaria de fazer?\n'
+                    '\033[96m[1]\033[m Pegar\n'
+                    '\033[96m[2]\033[m Deixar onde está'
+                    )
+            opc = int(input('Opção desejada: '))
+            if opc == 1:
+                print(f'O objeto "{self.localizacao.item.nome}" foi adicionado ao seu invetário!')
+                self.inventario = self.localizacao.item      
+
+    #Setter e Getter
+    @property
+    def inventario(self):
+        return self._inventario
+
+    @inventario.setter
+    def inventario(self, value):
+        if len(self._inventario) < 2:
+            self._inventario.append(value)
+        else:
+            print('O inventário está cheio')
     
 
 class Arqueiro(Personagem):
@@ -61,3 +97,4 @@ class Arqueiro(Personagem):
         print('Você aponta o seu arco e atira')
         print(f'Infligindo {self.ataque} de dano ao {inimigo.nome}')
         return super().atacar(inimigo)
+

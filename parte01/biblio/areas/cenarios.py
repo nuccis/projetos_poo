@@ -1,10 +1,11 @@
 #Definição de classe
 class Cenario:
-    def __init__(self, nome:str, inimigo, description:tuple) -> None:
+    def __init__(self, nome:str, inimigo, description:tuple, item) -> None:
         self.nome = nome
         self.inimigo = inimigo
         self.description = description
         self.descoberto = False
+        self.item = item
         self.tipo = 'cenario'
     
     def descrever(self):
