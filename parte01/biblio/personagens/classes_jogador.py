@@ -98,3 +98,4 @@ class Arqueiro(Personagem):
         print(f'Infligindo {self.ataque} de dano ao {inimigo.nome}')
         return super().atacar(inimigo)
 
+
