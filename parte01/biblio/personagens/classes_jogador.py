@@ -59,7 +59,13 @@ class Personagem:
         else:
             print(f'{'\033[32m===INVENTARIO===\033[m':^30}')
             for i, item in enumerate(self.inventario):
-                print(f'[{i+1}] {item.nome}')        
+                print(f'[{i+1}] {item.nome}') 
+            print(f'[{len(self.inventario)+1}] Fechar inventário')
+            opc = int(input('Opção desejada: '))
+            if opc - 1 < len(self.inventario):
+                self.inventario[opc-1].usar(self)
+                print(f'O objeto "{self.inventario[opc-1].nome}" foi utilizado')
+                self.inventario.pop(opc-1)            
 
     def vasculhar_objetos(self):
         if self.localizacao.tipo == 'cidade' or type(self.localizacao.item) is str:
@@ -74,7 +80,8 @@ class Personagem:
             opc = int(input('Opção desejada: '))
             if opc == 1:
                 print(f'O objeto "{self.localizacao.item.nome}" foi adicionado ao seu invetário!')
-                self.inventario = self.localizacao.item      
+                self.inventario = self.localizacao.item
+                self.localizacao.item = 'nenhum'      
 
     #Setter e Getter
     @property

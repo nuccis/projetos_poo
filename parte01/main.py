@@ -13,13 +13,15 @@ print(jogador)
 
 #Criar a interação de combate entre o inimigo e o player: feito
 #Criar opções de saída do jogo: quando o jogador escolhe sair ou quando o jogador morre: feito
-#Configurar o cenário campo como o cenário final
+#Configurar o cenário campo como o cenário final: adicionar o dragão nos inimigos do cenário e criar ele com o tipo 'final'. e na batalha configurar para caso o monstro morra e o personagem esteja em um cenário do tipo final, ele ganhe o jogo
 #Criar um inventário para o player -> será uma lista com 2 espaços: feito
 #Configurar o cenário estrada escura com um loot para o player: feito
 #configurar o menu com vasculhar objeto: feito
 #configurar o menu com inventário: feito
-#configurar o menu com mostrar os seus status
+#Configurar para utilizar os itens do inventário: feito
+#configurar o menu com mostrar os seus status: feito
 #Criar uma condição de vitória para o jogo
+
 while True:
     print(f'\n{cor(96,'====MENU===='):^30}')
     print(f'{cor(96,'[1]')} Olhar ao redor\n'
@@ -62,7 +64,8 @@ while True:
     elif opc == 4:
         jogador.mostar_inventario()
     elif opc == 5:
-        pass
+        print(f'\n{cor(94,'====STATUS DO JOGADOR===='):^35}')
+        print(jogador)
     elif opc == 6:
         jogador.movimentar(mp.mapa)
         jogador.localizacao.descrever()

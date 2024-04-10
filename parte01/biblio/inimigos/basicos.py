@@ -33,7 +33,7 @@ class InimigoBasico:
 
         
 class Lobo(InimigoBasico):
-    def __init__(self, nome, vida, ataque) -> None:
+    def __init__(self, nome: str, vida: int, ataque: int) -> None:
         super().__init__(nome, vida, ataque)
     
     def atacar(self, jogador) -> None:
@@ -42,10 +42,19 @@ class Lobo(InimigoBasico):
         super().atacar(jogador)
 
 class Urso(InimigoBasico):
-    def __init__(self, nome, vida, ataque) -> None:
+    def __init__(self, nome: str, vida: int, ataque: int) -> None:
         super().__init__(nome, vida, ataque)
     
     def atacar(self, jogador) -> None:
         print('O urso ruge e ataca')
         print(f'Infligindo {self.ataque} de dano à você')
         super().atacar(jogador)
+
+class Draco(InimigoBasico):
+    def __init__(self, nome: str, vida: int, ataque: int) -> None:
+        super().__init__(nome, vida, ataque)
+    
+    def atacar(self, jogador) -> None:
+        print('O draco irrompe em chamas e ataca')
+        print(f'Infligindo {self.ataque} de dano à você') 
+        return super().atacar(jogador)

@@ -3,7 +3,7 @@ class PocaoVida:
         self.nome = nome
         self.valor = valor
         self.descricao = descricao
-        self.usada = False
+
     
     def usar(self, jogador):
         if jogador.vida + self.valor > jogador.vidamax:
