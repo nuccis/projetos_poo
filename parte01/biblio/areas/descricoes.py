@@ -67,3 +67,12 @@ estrada_escura_desc_segunda_visita = ('Você retorna à estrada estreita e escur
                                       'onde as sombras das árvores parecem se mover em torno de você.\n'
                                       'O silêncio pesado ainda permeia o ar'
                                       )
+
+campo_desc = ('Você se encontra em um vasto campo aberto,\n'
+              'onde a grama alta balança suavemente ao vento.\n'
+              'O céu azul se estende sem fim sobre a paisagem tranquila.\n'
+              'No centro do campo, você percebe uma figura imponente:\n'
+              'o draco negro, deitado em repouso.\n'
+              'Seus olhos ardentes encaram você com intensidade,\n'
+              'um lembrete silencioso de seu poder e perigo.'
+              )

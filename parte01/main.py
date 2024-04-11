@@ -6,21 +6,38 @@ from biblio.personagens import classes_jogador as jdr
 def cor(cor, text):
     return f'\033[{cor}m{text}\033[m'
 
-jogador = jdr.Arqueiro('Nucis', mp.estrada_escura)
+#Variáveis
+fim_jogo = False
+desfecho_vitoria = ('Com um golpe final certeiro, você derrota o draco negro,\n'
+                    'cujo corpo imponente desaba no chão do campo.\n'
+                    'Um silêncio solene preenche o ar,\n'
+                    'enquanto você observa o horizonte em busca de qualquer sinal de perigo.\n'
+                    'A paz finalmente retorna à terra,\n'
+                    'e você sabe que sua coragem e determinação prevaleceram.\n'
+                    'Você é saudado como herói pelo povo do vilarejo,\n'
+                    'e seu nome será lembrado nas canções e histórias por gerações vindouras.\n'
+                    '\n'
+                    'Você venceu!\n'
+                    'Seu destino está agora nas suas mãos,\n'
+                    'e novas aventuras aguardam além do horizonte.'
+                    )
+jogador = jdr.Arqueiro('Nucis', mp.campo)
 
 
 print(jogador)
 
 #Criar a interação de combate entre o inimigo e o player: feito
 #Criar opções de saída do jogo: quando o jogador escolhe sair ou quando o jogador morre: feito
-#Configurar o cenário campo como o cenário final: adicionar o dragão nos inimigos do cenário e criar ele com o tipo 'final'. e na batalha configurar para caso o monstro morra e o personagem esteja em um cenário do tipo final, ele ganhe o jogo
+#Configurar o cenário campo como o cenário final: adicionar o dragão nos inimigos do cenário e criar ele com o tipo 'final'. e na batalha configurar para caso o monstro morra e o personagem esteja em um cenário do tipo final, ele ganhe o jogo: feito
 #Criar um inventário para o player -> será uma lista com 2 espaços: feito
 #Configurar o cenário estrada escura com um loot para o player: feito
 #configurar o menu com vasculhar objeto: feito
 #configurar o menu com inventário: feito
 #Configurar para utilizar os itens do inventário: feito
 #configurar o menu com mostrar os seus status: feito
-#Criar uma condição de vitória para o jogo
+#Criar uma condição de vitória para o jogo: feito
+#Criar uma lógica para chance de conseguir fugir do inimigo:
+#Criar um range para o ataque (2 -4):
 
 while True:
     print(f'\n{cor(96,'====MENU===='):^30}')
@@ -51,6 +68,8 @@ while True:
                     jogador.atacar(inimigo)
                     inimigo.status()
                     if not inimigo.vivo:
+                        if jogador.localizacao.tipo == 'final':
+                            fim_jogo = True
                         break
                     inimigo.atacar(jogador)
                     jogador.status()
@@ -74,7 +93,9 @@ while True:
     if not jogador.vivo:
         print('Você morreu.')
         break
-
+    if fim_jogo:
+        linhas = desfecho_vitoria.split('\n')
+        for linha in linhas:
+            print(f'\033[0;34m{linha.center(100)}\033[m')
+        break
 print('Até logo!')
-
-

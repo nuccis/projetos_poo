@@ -1,12 +1,12 @@
 #Definição de classe
 class Cenario:
-    def __init__(self, nome:str, inimigo, description:tuple, item) -> None:
+    def __init__(self, nome:str, inimigo, description:tuple, item, tipo = 'cenario') -> None:
         self.nome = nome
         self.inimigo = inimigo
         self.description = description
         self.descoberto = False
         self.item = item
-        self.tipo = 'cenario'
+        self.tipo = tipo
     
     def descrever(self):
         if not self.descoberto:
@@ -21,9 +21,7 @@ class Cenario:
             if self.inimigo.vida < self.inimigo.vidamax:
                 print('Há marcas de sangue no chão devido à sua batalha recente'.center(100)) 
             if self.inimigo.vida == 0:
-                self.inimigo.status().center(100)
- 
-            
+                self.inimigo.status().center(100)          
 
     def __repr__(self) -> str:
         return(f'{type(self).__name__}, '
