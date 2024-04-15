@@ -1,3 +1,4 @@
+from random import randint
 #Definição de classes
 class Personagem:
     def __init__(self, nome:str, vida:int, ataque:int, localizacao:object) -> None:
@@ -23,7 +24,19 @@ class Personagem:
             inimigo.vida = 0
         else:
             inimigo.vida -= self.ataque
-    
+
+    def fugir (self, inimigo:object) -> None:
+        fugir = randint(1,10)
+        sucesso = False
+        if fugir > 7:
+            print(f'Você conseguiu fugir do {inimigo.nome}!')
+            sucesso = True
+        else:
+            print(f'Você tenta fugir, porém o {inimigo.nome} consegue te alcançar!')
+            inimigo.atacar(self)
+            self.status()
+        return sucesso
+        
     def movimentar(self, mapa:dict):
         print('Caminhos disponíveis:')
         for i, e in enumerate(mapa[self.localizacao.nome]):
@@ -43,6 +56,7 @@ class Personagem:
             print('Não há inimigos por perto.')
         else:
             inimigo = self.localizacao.inimigo
+            inimigo.status()
         return inimigo
     
     def status(self):
@@ -104,5 +118,3 @@ class Arqueiro(Personagem):
         print('Você aponta o seu arco e atira')
         print(f'Infligindo {self.ataque} de dano ao {inimigo.nome}')
         return super().atacar(inimigo)
-
-

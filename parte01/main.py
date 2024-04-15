@@ -6,6 +6,33 @@ from biblio.personagens import classes_jogador as jdr
 def cor(cor, text):
     return f'\033[{cor}m{text}\033[m'
 
+def batalha(jogador, inimigo, fim_jogo):
+
+    while True:
+        print('O que gostaria de fazer?\n'
+            f'{cor(96,'[1]')} Atacar\n'
+            f'{cor(96,'[2]')} Avaliar ameaça\n'
+            f'{cor(96,'[3]')} Fugir\n')
+        esc = int(input('Opção desejada: '))
+        if esc == 3:
+            if jogador.fugir(inimigo):
+                break
+        elif esc == 1:
+            jogador.atacar(inimigo)
+            inimigo.status()
+            if not inimigo.vivo:
+                if jogador.localizacao.tipo == 'final':
+                    fim_jogo = True
+                break
+            inimigo.atacar(jogador)
+            jogador.status()
+            if not jogador.vivo:
+                break
+        elif esc == 2:
+            print(cor(36, '\nStatus do Inimigo'))
+            print(inimigo)   
+    return fim_jogo                     
+
 #Variáveis
 fim_jogo = False
 desfecho_vitoria = ('Com um golpe final certeiro, você derrota o draco negro,\n'
@@ -21,7 +48,7 @@ desfecho_vitoria = ('Com um golpe final certeiro, você derrota o draco negro,\n
                     'Seu destino está agora nas suas mãos,\n'
                     'e novas aventuras aguardam além do horizonte.'
                     )
-jogador = jdr.Arqueiro('Nucis', mp.campo)
+jogador = jdr.Arqueiro('Nucis', mp.cidade)
 
 
 print(jogador)
@@ -36,13 +63,18 @@ print(jogador)
 #Configurar para utilizar os itens do inventário: feito
 #configurar o menu com mostrar os seus status: feito
 #Criar uma condição de vitória para o jogo: feito
-#Criar uma lógica para chance de conseguir fugir do inimigo:
-#Criar um range para o ataque (2 -4):
+#Criar uma lógica para chance de conseguir fugir do inimigo: feito
+#Criar um range para o ataque (2 - 4):
+#Testar o jogo em partidas diferentes:
+#Criar as validações de entrada:
+#Criar o menu de criação do personagem:
+#Melhorar a formatação e a apresentação visual:
+#Fazer a documentação:
 
 while True:
     print(f'\n{cor(96,'====MENU===='):^30}')
     print(f'{cor(96,'[1]')} Olhar ao redor\n'
-          f'{cor(96,'[2]')} Procurar inimigos\n'
+          f'{cor(96,'[2]')} Procurar por inimigos\n'
           f'{cor(96,'[3]')} Vasculhar por objetos\n'
           f'{cor(96,'[4]')} Inventário\n'
           f'{cor(96,'[5]')} Mostrar seus status\n'
@@ -54,30 +86,7 @@ while True:
     elif opc == 2:
         inimigo = jogador.procurar_inimigos()      
         if type(inimigo) is not str and inimigo.vivo:
-            inimigo.status()
-            while True:
-                print('O que gostaria de fazer?\n'
-                    f'{cor(96,'[1]')} Atacar\n'
-                    f'{cor(96,'[2]')} Avaliar ameaça\n'
-                    f'{cor(96,'[3]')} Ignorar\n')
-                esc = int(input('Opção desejada: '))
-                if esc == 3:
-                    print(f'Você passa despercebido perante o {inimigo.nome}')
-                    break
-                elif esc == 1:
-                    jogador.atacar(inimigo)
-                    inimigo.status()
-                    if not inimigo.vivo:
-                        if jogador.localizacao.tipo == 'final':
-                            fim_jogo = True
-                        break
-                    inimigo.atacar(jogador)
-                    jogador.status()
-                    if not jogador.vivo:
-                        break
-                elif esc == 2:
-                    print(cor(36, '\nStatus do Inimigo'))
-                    print(inimigo)                        
+            fim_jogo = batalha(jogador, inimigo, fim_jogo)                   
     elif opc == 3:
         jogador.vasculhar_objetos()
     elif opc == 4:
@@ -88,6 +97,12 @@ while True:
     elif opc == 6:
         jogador.movimentar(mp.mapa)
         jogador.localizacao.descrever()
+        if jogador.localizacao.tipo != 'cidade':
+            inimigo = jogador.localizacao.inimigo
+            if type(inimigo) is not str and inimigo.vivo:
+                print('\n',cor(91,f'Enquanto você adentra o/a {jogador.localizacao.nome}'.center(100)))
+                print(cor(91,f'um {inimigo.nome} surge das sombras, pronto para te desafiar.'.center(100)))
+                fim_jogo = batalha(jogador, inimigo, fim_jogo)    
     elif opc == 7:
         break
     if not jogador.vivo:

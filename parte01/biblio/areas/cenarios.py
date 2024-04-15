@@ -20,8 +20,9 @@ class Cenario:
         if type(self.inimigo) is not str:
             if self.inimigo.vida < self.inimigo.vidamax:
                 print('Há marcas de sangue no chão devido à sua batalha recente'.center(100)) 
+            '''            
             if self.inimigo.vida == 0:
-                self.inimigo.status().center(100)          
+                self.inimigo.status() '''         
 
     def __repr__(self) -> str:
         return(f'{type(self).__name__}, '
