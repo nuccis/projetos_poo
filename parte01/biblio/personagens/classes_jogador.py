@@ -1,4 +1,5 @@
 from random import randint
+from math import trunc
 #Definição de classes
 class Personagem:
     def __init__(self, nome:str, vida:int, ataque:int, localizacao:object) -> None:
@@ -19,11 +20,13 @@ class Personagem:
               )
     
     def atacar(self, inimigo:object) -> None:
-        if inimigo.vida - self.ataque <= 0:
+        dano = randint(trunc(self.ataque*0.6), self.ataque)
+        if inimigo.vida - dano <= 0:
             inimigo.vivo = False
             inimigo.vida = 0
         else:
-            inimigo.vida -= self.ataque
+            inimigo.vida -= dano
+            print(f'Infligindo {dano} de dano ao {inimigo.nome}')
 
     def fugir (self, inimigo:object) -> None:
         fugir = randint(1,10)
@@ -116,5 +119,4 @@ class Arqueiro(Personagem):
     
     def atacar(self, inimigo: object) -> None:
         print('Você aponta o seu arco e atira')
-        print(f'Infligindo {self.ataque} de dano ao {inimigo.nome}')
         return super().atacar(inimigo)

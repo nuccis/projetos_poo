@@ -48,7 +48,7 @@ desfecho_vitoria = ('Com um golpe final certeiro, você derrota o draco negro,\n
                     'Seu destino está agora nas suas mãos,\n'
                     'e novas aventuras aguardam além do horizonte.'
                     )
-jogador = jdr.Arqueiro('Nucis', mp.cidade)
+jogador = jdr.Arqueiro('Nucis', mp.campo)
 
 
 print(jogador)
@@ -64,8 +64,8 @@ print(jogador)
 #configurar o menu com mostrar os seus status: feito
 #Criar uma condição de vitória para o jogo: feito
 #Criar uma lógica para chance de conseguir fugir do inimigo: feito
-#Criar um range para o ataque (2 - 4):
-#Testar o jogo em partidas diferentes:
+#Criar um range para o ataque (2 - 4): feito
+#Testar o jogo em partidas diferentes: feito
 #Criar as validações de entrada:
 #Criar o menu de criação do personagem:
 #Melhorar a formatação e a apresentação visual:

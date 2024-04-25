@@ -1,3 +1,5 @@
+from random import randint
+from math import trunc
 #Definição de classes
 class InimigoBasico:
     def __init__(self, nome:str, vida:int, ataque:int) -> None:
@@ -13,11 +15,13 @@ class InimigoBasico:
               f'Ataque: {self.ataque}\n')
     
     def atacar(self, jogador) -> None:
-        if jogador.vida - self.ataque <= 0:
+        dano = randint(trunc(self.ataque*0.6), self.ataque)
+        if jogador.vida - dano <= 0:
             jogador.vivo = False
             jogador.vida = 0
         else:
-            jogador.vida -= self.ataque
+            jogador.vida -= dano
+            print(f'Infligindo {dano} de dano à você') 
     
     def status(self):
         #aqui irá retornar textos para diferentes status do inimigo: vivo, ferido e morto
@@ -37,8 +41,7 @@ class Lobo(InimigoBasico):
         super().__init__(nome, vida, ataque)
     
     def atacar(self, jogador) -> None:
-        print('O lobo rosna e ataca')
-        print(f'Infligindo {self.ataque} de dano à você')        
+        print('O lobo rosna e ataca')      
         super().atacar(jogador)
 
 class Urso(InimigoBasico):
@@ -47,7 +50,6 @@ class Urso(InimigoBasico):
     
     def atacar(self, jogador) -> None:
         print('O urso ruge e ataca')
-        print(f'Infligindo {self.ataque} de dano à você')
         super().atacar(jogador)
 
 class Draco(InimigoBasico):
@@ -55,6 +57,5 @@ class Draco(InimigoBasico):
         super().__init__(nome, vida, ataque)
     
     def atacar(self, jogador) -> None:
-        print('O draco irrompe em chamas e ataca')
-        print(f'Infligindo {self.ataque} de dano à você') 
+        print('O draco irrompe em chamas e ataca')      
         return super().atacar(jogador)
