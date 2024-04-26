@@ -42,9 +42,12 @@ class Personagem:
         
     def movimentar(self, mapa:dict):
         print('Caminhos disponíveis:')
-        for i, e in enumerate(mapa[self.localizacao.nome]):
-            print(f'[{i+1}] {e.nome.capitalize()}')
-        resp = int(input('Digite a sua escolha: '))
+        i=0
+        for e in mapa[self.localizacao.nome]:
+            i+=1
+            print(f'[{i}] {e.nome.capitalize()}')
+            
+        resp = self.leInteiro('Digite a sua escolha: ', i)
         self.localizacao.descoberto = True
         self.localizacao = mapa[self.localizacao.nome][resp - 1]
     
@@ -75,10 +78,12 @@ class Personagem:
             print('Seu inventário está vázio')
         else:
             print(f'{'\033[32m===INVENTARIO===\033[m':^30}')
-            for i, item in enumerate(self.inventario):
-                print(f'[{i+1}] {item.nome}') 
+            i=0
+            for item in self.inventario:
+                i+=1
+                print(f'[{i}] {item.nome}') 
             print(f'[{len(self.inventario)+1}] Fechar inventário')
-            opc = int(input('Opção desejada: '))
+            opc = self.leInteiro('Opção desejada: ', i+1)
             if opc - 1 < len(self.inventario):
                 self.inventario[opc-1].usar(self)
                 print(f'O objeto "{self.inventario[opc-1].nome}" foi utilizado')
@@ -94,7 +99,7 @@ class Personagem:
                     '\033[96m[1]\033[m Pegar\n'
                     '\033[96m[2]\033[m Deixar onde está'
                     )
-            opc = int(input('Opção desejada: '))
+            opc = self.leInteiro('Opção desejada: ', 2)
             if opc == 1:
                 print(f'O objeto "{self.localizacao.item.nome}" foi adicionado ao seu invetário!')
                 self.inventario = self.localizacao.item
@@ -111,6 +116,19 @@ class Personagem:
             self._inventario.append(value)
         else:
             print('O inventário está cheio')
+    
+    #Métodos Estáticos
+    @staticmethod
+    def leInteiro(msg:str, rng:int) -> int:
+        while True:
+            try:
+                opc = int(input(msg))
+                if opc not in range(1, rng+1):
+                    raise ValueError
+                break
+            except ValueError:
+                print('\033[0;31mErro! Digite uma opção válida.\033[m')
+        return opc
     
 
 class Arqueiro(Personagem):

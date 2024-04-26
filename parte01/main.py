@@ -2,7 +2,7 @@ from biblio.areas import mapa as mp
 #from biblio.inimigos import basicos as inb
 from biblio.personagens import classes_jogador as jdr
 
-#função
+#funções
 def cor(cor, text):
     return f'\033[{cor}m{text}\033[m'
 
@@ -13,7 +13,7 @@ def batalha(jogador, inimigo, fim_jogo):
             f'{cor(96,'[1]')} Atacar\n'
             f'{cor(96,'[2]')} Avaliar ameaça\n'
             f'{cor(96,'[3]')} Fugir\n')
-        esc = int(input('Opção desejada: '))
+        esc = leInteiro('Opção desejada: ', 3)
         if esc == 3:
             if jogador.fugir(inimigo):
                 break
@@ -25,13 +25,24 @@ def batalha(jogador, inimigo, fim_jogo):
                     fim_jogo = True
                 break
             inimigo.atacar(jogador)
-            jogador.status()
-            if not jogador.vivo:
-                break
+            jogador.status()    
         elif esc == 2:
             print(cor(36, '\nStatus do Inimigo'))
-            print(inimigo)   
+            print(inimigo)  
+        if not jogador.vivo:
+            break 
     return fim_jogo                     
+
+def leInteiro(msg:str, rng:int) -> int:
+    while True:
+        try:
+            opc = int(input(msg))
+            if opc not in range(1, rng+1):
+                raise ValueError
+            break
+        except ValueError:
+            print('\033[0;31mErro! Digite uma opção válida.\033[m')
+    return opc
 
 #Variáveis
 fim_jogo = False
@@ -48,7 +59,7 @@ desfecho_vitoria = ('Com um golpe final certeiro, você derrota o draco negro,\n
                     'Seu destino está agora nas suas mãos,\n'
                     'e novas aventuras aguardam além do horizonte.'
                     )
-jogador = jdr.Arqueiro('Nucis', mp.campo)
+jogador = jdr.Arqueiro('Nucis', mp.floresta)
 
 
 print(jogador)
@@ -66,9 +77,9 @@ print(jogador)
 #Criar uma lógica para chance de conseguir fugir do inimigo: feito
 #Criar um range para o ataque (2 - 4): feito
 #Testar o jogo em partidas diferentes: feito
-#Criar as validações de entrada:
-#Criar o menu de criação do personagem:
+#Criar as validações de entrada: feito
 #Melhorar a formatação e a apresentação visual:
+#Criar o menu de criação do personagem:
 #Fazer a documentação:
 
 while True:
@@ -80,7 +91,7 @@ while True:
           f'{cor(96,'[5]')} Mostrar seus status\n'
           f'{cor(96,'[6]')} Andar\n'
           f'{cor(96,'[7]')} Sair do jogo\n')
-    opc = int(input('Opção desejada: '))
+    opc = leInteiro('Opção desejada: ', 7)
     if opc == 1:
         jogador.localizacao.descrever()
     elif opc == 2:
